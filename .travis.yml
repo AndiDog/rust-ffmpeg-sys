@@ -23,5 +23,5 @@ addons:
       - libswscale-dev
 script:
   # Current Travis Ubuntu version uses libav which doesn't come with libswresample
-  - 'cargo build --verbose --no-default-features --features "avcodec avfilter avformat swresample swscale"'
-  - 'cargo test  --verbose --no-default-features --features "avcodec avfilter avformat swresample swscale"'
+  - 'cargo build --verbose --no-default-features --features "avcodec avfilter avformat avresample swscale"'
+  - 'cargo test  --verbose --no-default-features --features "avcodec avfilter avformat avresample swscale"'
