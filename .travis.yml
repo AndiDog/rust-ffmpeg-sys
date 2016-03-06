@@ -19,4 +19,5 @@ addons:
       - libavformat-dev
       - libavresample-dev
       - libavutil-dev
+      - libswresample-dev
       - libswscale-dev
