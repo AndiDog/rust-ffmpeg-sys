@@ -21,9 +21,13 @@ addons:
       - libavutil-dev
       - libswresample-dev
       - libswscale-dev
+before_install:
+  - sudo add-apt-repository -y ppa:mc3man/trusty-media
+  - sudo apt-get -y update
+  - sudo apt-get -y dist-upgrade
 script:
   # Current Travis Ubuntu version uses libav which doesn't come with libswresample
   - cargo build --verbose --no-default-features --features "avcodec avfilter avformat avresample swscale"
   - cargo test  --verbose --no-default-features --features "avcodec avfilter avformat avresample swscale"
 after_failure:
-  - find /usr -type f | grep -E 'lib(avcodec/version|avcodec/avcodec).h$' | xargs -I THEFILE -- sh -c 'echo "=== THEFILE ==="; cat THEFILE'
+  - find /usr -type f 2>/dev/null | grep -E 'lib(avcodec/version|avcodec/avcodec).h$' | xargs -I THEFILE -- sh -c 'echo "=== THEFILE ==="; cat THEFILE'
