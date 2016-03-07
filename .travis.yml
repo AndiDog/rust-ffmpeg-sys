@@ -13,18 +13,18 @@ addons:
   apt:
     packages:
       - build-essential
-      - libavcodec-dev
-      - libavdevice-dev
-      - libavfilter-dev
-      - libavformat-dev
-      - libavresample-dev
-      - libavutil-dev
-      - libswresample-dev
-      - libswscale-dev
+      #- libavcodec-dev
+      #- libavdevice-dev
+      #- libavfilter-dev
+      #- libavformat-dev
+      #- libavresample-dev
+      #- libavutil-dev
+      #- libswresample-dev
+      #- libswscale-dev
 before_install:
-  - sudo add-apt-repository -y ppa:mc3man/trusty-media
-  - sudo apt-get -y update
-  - sudo apt-get -y dist-upgrade
+  - sudo add-apt-repository ppa:mc3man/trusty-media -y
+  - sudo apt-get update -q
+  - sudo apt-get install ffmpeg -y
 script:
   # Current Travis Ubuntu version uses libav which doesn't come with libswresample
   - cargo build --verbose --no-default-features --features "avcodec avfilter avformat avresample swscale"
