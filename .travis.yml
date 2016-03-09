@@ -32,7 +32,7 @@ before_install:
   - git checkout release/2.8
   - mkdir ~/FFmpeg-build
   - cd ~/FFmpeg-build
-  - ../FFmpeg/configure --disable-ffprobe --disable-ffserver --disable-doc
+  - ../FFmpeg/configure --disable-ffprobe --disable-ffserver --disable-doc --enable-avresample
   - make -j
   - sudo make install
   - make distclean
